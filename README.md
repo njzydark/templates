@@ -1,6 +1,6 @@
 # templates
 
-A collection templates for [template-cli](https://github.com/njzydark/template-cli)
+A collection templates for [project-template-cli](https://github.com/njzydark/project-template-cli)
 
 ## React
 

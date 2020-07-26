@@ -15,3 +15,4 @@ A collection templates for [project-template-cli](https://github.com/njzydark/pr
 ## electron
 
 - electron-quick-start
+- umi-electron-starter

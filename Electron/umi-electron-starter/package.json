@@ -1,0 +1,62 @@
+{
+  "name": "umi-electron-starter",
+  "author": "njzydark",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/main/index.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "npm run main:prod && npm run renderer:prod",
+    "main:dev": "cross-env NODE_ENV=development webpack --watch --mode development --config webpack.main.config.js --info-verbosity verbose",
+    "main:prod": "cross-env NODE_ENV=production webpack --mode production --config webpack.main.config.js",
+    "renderer:dev": "cross-env APP_ROOT=src/renderer PORT=8890 umi dev",
+    "renderer:prod": "cross-env APP_ROOT=src/renderer umi build",
+    "postinstall": "cross-env APP_ROOT=src/renderer umi generate tmp",
+    "prettier": "prettier --write 'src/**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "test": "cross-env APP_ROOT=src/renderer umi-test",
+    "test:coverage": "cross-env APP_ROOT=src/renderer umi-test --coverage",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.electron.umi-electron-starter",
+    "productName": "Umi-Electron-Starter",
+    "directories": {
+      "output": "output"
+    },
+    "files": [
+      "dist",
+      "!node_modules"
+    ]
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "@ant-design/pro-layout": "^5.0.19",
+    "@umijs/preset-react": "1.x",
+    "@umijs/test": "^3.2.10",
+    "lint-staged": "^10.0.7",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "umi": "^3.2.10",
+    "yorkie": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.2",
+    "electron": "^9.1.1",
+    "electron-builder": "^22.7.0",
+    "webpack-cli": "^3.3.12"
+  }
+}
